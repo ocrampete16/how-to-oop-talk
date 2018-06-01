@@ -1,14 +1,22 @@
 <?php
+
 declare(strict_types=1);
 
-$order = new Order(new Payment(1200));
+require __DIR__.'/../vendor/autoload.php';
 
-$paypalPaymentProvider = new PaypalPaymentProvider(new PaypalClient());
-$paymentGateway = new PaymentGateway($paypalPaymentProvider);
+use PaymentExample\Client\PaypalClient;
+use PaymentExample\Order;
+use PaymentExample\DuePayment;
+use PaymentExample\PaymentProvider\PaypalPaymentProvider;
 
-$paymentGateway->reserveAmount($order);
+$order = Order::withDuePayment(new DuePayment(1200));
+$paymentProvider = new PaypalPaymentProvider(new PaypalClient());
 
+// We just received an order! Let's reserve the amount for now.
+$paymentProvider->reserveAmount($order);
 // Ooops, we added one zero more than necessary! Let's change that.
-$paymentGateway->updateReservedAmount($order, 120);
-
-$paymentGateway->collectMoney($order);
+$paymentProvider->updateReservedAmount($order, 120);
+// Yay, time to get richer!
+$paymentProvider->collectMoney($order);
+// No, they demanded a refund immediately :(
+$paymentProvider->refundCollectedMoney($order);

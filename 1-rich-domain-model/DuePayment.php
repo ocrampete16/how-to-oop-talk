@@ -1,7 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
-class Payment
+namespace PaymentExample;
+
+class DuePayment
 {
     private $amount;
 
@@ -15,8 +18,8 @@ class Payment
         return $this->amount;
     }
 
-    public function setAmount(int $amount): void
+    public function setAmount(int $amount): self
     {
-        $this->amount = $amount;
+        return new DuePayment($amount);
     }
 }

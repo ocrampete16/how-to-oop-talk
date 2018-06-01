@@ -1,22 +1,56 @@
 <?php
+
 declare(strict_types=1);
+
+namespace PaymentExample;
+
+use Ramsey\Uuid\UuidInterface;
 
 class Order
 {
-    private $payment;
+    private $duePayment;
+    private $paymentProcessToken = null;
 
-    public function __construct(Payment $payment)
+    private function __construct(DuePayment $duePayment)
     {
-        $this->payment = $payment;
+        $this->duePayment = $duePayment;
     }
 
-    public function getPayment(): Payment
+    public static function withDuePayment(DuePayment $duePayment): self
     {
-        return $this->payment;
+        return new self($duePayment);
     }
 
-    public function setPayment(Payment $payment): void
+    public function getDuePayment(): DuePayment
     {
-        $this->payment = $payment;
+        return $this->duePayment;
+    }
+
+    public function setDuePayment(DuePayment $duePayment): void
+    {
+        $this->duePayment = $duePayment;
+    }
+
+    public function paymentIsPending(): bool
+    {
+        return null !== $this->paymentProcessToken;
+    }
+
+    public function startPaymentProcess(UuidInterface $paymentProcessToken): void
+    {
+        if ($this->paymentIsPending()) {
+            throw new \LogicException('There is already a payment being processed!');
+        }
+
+        $this->paymentProcessToken = $paymentProcessToken;
+    }
+
+    public function getPaymentProcessToken(): UuidInterface
+    {
+        if (!$this->paymentIsPending()) {
+            throw new \LogicException('No payment process has beens started yet!');
+        }
+
+        return $this->paymentProcessToken;
     }
 }

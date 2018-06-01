@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 class Mailer
@@ -11,14 +12,6 @@ class Mailer
     private $entityManager;
     // ...
 
-    /**
-     * @param $mailerApiClient
-     * @param $loggingRepository
-     * @param $passwordGenerator
-     * @param $passwordResetter
-     * @param $userRepository
-     * @param $entityManager
-     */
     public function __construct(
         $mailerApiClient,
         $loggingRepository,
@@ -27,8 +20,7 @@ class Mailer
         $userRepository,
         $entityManager
         // ...
-    )
-    {
+    ) {
         $this->mailerApiClient = $mailerApiClient;
         $this->loggingRepository = $loggingRepository;
         $this->passwordGenerator = $passwordGenerator;
@@ -39,12 +31,10 @@ class Mailer
 
     public function sendPasswordResetMail(User $user)
     {
-
     }
 
     public function sendOrderConfirmationMail(User $user)
     {
-
     }
 
     // ...

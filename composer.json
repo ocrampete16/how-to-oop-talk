@@ -1,0 +1,12 @@
+{
+    "name": "ocrampete16/how-to-oop-talk",
+    "authors": [
+        {
+            "name": "Marco Petersen",
+            "email": "m@rcopetersen.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    }
+}

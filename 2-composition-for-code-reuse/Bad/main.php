@@ -1,6 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
-require_once 'PoemPrinter.php';
+require __DIR__.'/../../vendor/autoload.php';
+
+use BadPoemPrinterExample\PoemPrinter;
 
 (new PoemPrinter())->print();

@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-require_once 'PoemPrinter.php';
+namespace BadPoemPrinterExample;
 
 class RandomPoemPrinter extends PoemPrinter
 {

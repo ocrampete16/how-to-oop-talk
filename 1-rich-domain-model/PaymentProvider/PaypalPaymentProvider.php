@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace PaymentExample\PaymentProvider;
 
 use PaymentExample\Client\PaypalClient;
-use PaymentExample\Order;
+use PaymentExample\Payment;
 
-class PaypalPaymentProvider implements PaymentProvider
+class PaypalPaymentProvider
 {
     private $client;
 
@@ -16,31 +16,30 @@ class PaypalPaymentProvider implements PaymentProvider
         $this->client = $client;
     }
 
-    public function reserveAmount(Order $order): void
+    public function reserveAmount(Payment $payment): void
     {
         $token = $this->client->beginPaymentProcess();
-        $order->startPaymentProcess($token);
-        $this->client->reserveAmount($token, $order->getDuePayment()->getAmount());
+        $payment->start($token);
+        $this->client->reserveAmount($token, $payment->getAmount());
     }
 
-    public function updateReservedAmount(Order $order, int $amount): void
+    public function updateReservedAmount(Payment $payment): void
     {
-        $token = $order->getPaymentProcessToken();
-        $this->client->updateReservedAmount($token, $order->getDuePayment()->getAmount());
+        $this->client->updateReservedAmount($payment->getProcessToken(), $payment->getAmount());
     }
 
-    public function cancelAmountReservation(Order $order): void
+    public function cancelAmountReservation(Payment $payment): void
     {
-        $this->client->cancelAmountReservation($order->getPaymentProcessToken());
+        $this->client->cancelAmountReservation($payment->getProcessToken());
     }
 
-    public function collectMoney(Order $order): void
+    public function collectMoney(Payment $payment): void
     {
-        $this->client->collectMoney($order->getPaymentProcessToken());
+        $this->client->collectMoney($payment->getProcessToken());
     }
 
-    public function refundCollectedMoney(Order $order): void
+    public function refundCollectedMoney(Payment $payment): void
     {
-        $this->client->refundCollectedMoney($order->getPaymentProcessToken());
+        $this->client->refundCollectedMoney($payment->getProcessToken());
     }
 }

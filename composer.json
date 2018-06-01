@@ -7,6 +7,12 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "ramsey/uuid": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "PaymentExample\\": "1-rich-domain-model"
+        }
     }
 }

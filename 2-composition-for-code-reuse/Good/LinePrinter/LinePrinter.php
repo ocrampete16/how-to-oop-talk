@@ -1,10 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
+namespace PoemPrinterExample\LinePrinter;
 
 interface LinePrinter
 {
     /**
      * @param string[] $lines
      */
-    function print(array $lines): void;
+    public function print(array $lines): void;
 }

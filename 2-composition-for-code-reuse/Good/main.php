@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
-require_once 'PoemPrinter.php';
-require_once 'LineSorter/DefaultLineSorter.php';
-require_once 'LinePrinter/DefaultLinePrinter.php';
+require __DIR__.'/../../vendor/autoload.php';
+
+use PoemPrinterExample\PoemPrinter;
+use PoemPrinterExample\LineSorter\DefaultLineSorter;
+use PoemPrinterExample\LinePrinter\DefaultLinePrinter;
 
 (new PoemPrinter(new DefaultLineSorter(), new DefaultLinePrinter()))->print();

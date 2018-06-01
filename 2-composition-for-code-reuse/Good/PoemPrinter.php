@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
-require_once 'LineSorter/LineSorter.php';
-require_once 'LinePrinter/LinePrinter.php';
+namespace PoemPrinterExample;
+
+use PoemPrinterExample\LineSorter\LineSorter;
+use PoemPrinterExample\LinePrinter\LinePrinter;
 
 class PoemPrinter
 {

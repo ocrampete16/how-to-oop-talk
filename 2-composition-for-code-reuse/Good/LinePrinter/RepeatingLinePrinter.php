@@ -1,15 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
-require_once 'LinePrinter.php';
+namespace PoemPrinterExample\LinePrinter;
 
 class DefaultLinePrinter implements LinePrinter
 {
-    function print(array $lines): void
+    public function print(array $lines): void
     {
         foreach ($lines as $line) {
-            echo $line . PHP_EOL;
-            echo $line . PHP_EOL;
+            echo $line.PHP_EOL;
+            echo $line.PHP_EOL;
         }
     }
 }

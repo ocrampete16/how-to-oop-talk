@@ -1,11 +1,15 @@
 <?php
+
 declare(strict_types=1);
+
+namespace PoemPrinterExample\LineSorter;
 
 interface LineSorter
 {
     /**
      * @param string[] $lines
+     *
      * @return string[]
      */
-    function sort(array $lines): array;
+    public function sort(array $lines): array;
 }

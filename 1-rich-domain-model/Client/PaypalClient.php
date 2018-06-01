@@ -10,7 +10,7 @@ use Ramsey\Uuid\UuidInterface;
  */
 class PaypalClient
 {
-    public function beginPaymentProcess(int $amount): UuidInterface
+    public function beginPaymentProcess(): UuidInterface
     {
         return Uuid::uuid4();
     }

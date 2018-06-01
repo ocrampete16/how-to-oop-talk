@@ -6,6 +6,7 @@ namespace PaymentExample\PaymentProvider;
 
 use PaymentExample\Order;
 
+// TODO: Löschen!
 interface PaymentProvider
 {
     public function reserveAmount(Order $order): void;

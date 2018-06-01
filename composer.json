@@ -13,8 +13,8 @@
     "autoload": {
         "psr-4": {
             "PaymentExample\\": "1-rich-domain-model",
-            "BadPoemPrinterExample\\": "2-composition-for-code-reuse/Bad",
-            "PoemPrinterExample\\": "2-composition-for-code-reuse/Good"
+            "BadPoemPrinterExample\\": "2-composition-for-code-reuse/Before",
+            "PoemPrinterExample\\": "2-composition-for-code-reuse/After"
         }
     }
 }

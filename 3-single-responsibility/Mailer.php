@@ -39,3 +39,5 @@ class Mailer
 
     // ...
 }
+
+// Merke: Klassen, die nur "steuern", tendieren dazu, mehr Dependencies zu haben!

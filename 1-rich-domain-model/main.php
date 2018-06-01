@@ -20,3 +20,6 @@ $paymentProvider->updateReservedAmount($order, 120);
 $paymentProvider->collectMoney($order);
 // No, they demanded a refund immediately :(
 $paymentProvider->refundCollectedMoney($order);
+
+
+//TIPP: Grundinterface für alle paketspezifischen Exceptions, erben von SPL-Exceptions je nach Bedarf

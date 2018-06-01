@@ -18,7 +18,7 @@ class PaypalPaymentProvider implements PaymentProvider
 
     public function reserveAmount(Order $order): void
     {
-        $token = $this->client->beginPaymentProcess($order->getDuePayment()->getAmount());
+        $token = $this->client->beginPaymentProcess();
         $order->startPaymentProcess($token);
         $this->client->reserveAmount($token, $order->getDuePayment()->getAmount());
     }

@@ -8,6 +8,13 @@ use Ramsey\Uuid\UuidInterface;
 
 class Order
 {
+    // TODO: verwenden!
+    public const STATUS_OPEN = 'OPEN';
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_PAID = 'PAID';
+    public const STATUS_REFUNDED = 'REFUNDED';
+
     private $duePayment;
     private $paymentProcessToken = null;
 

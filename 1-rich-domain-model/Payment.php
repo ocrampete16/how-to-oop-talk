@@ -36,15 +36,10 @@ class Payment
         return $this->amount;
     }
 
-    public function setAmount(Money $amount): void
-    {
-        $this->amount = $amount;
-    }
-
     public function getProcessToken(): UuidInterface
     {
         if (self::STATUS_OPEN === $this->status) {
-            throw new \LogicException('Only open proce');
+            throw new \LogicException('No process has beens started yet.');
         }
 
         return $this->processToken;
@@ -58,6 +53,11 @@ class Payment
 
         $this->processToken = $processToken;
         $this->status = self::STATUS_PENDING;
+    }
+
+    public function updateAmount(Money $amount): void
+    {
+        $this->amount = $amount;
     }
 
     public function cancel(): void

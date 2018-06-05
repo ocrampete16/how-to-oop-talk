@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
+use BadPoemPrinterExample\PoemPrinter;
+
 require __DIR__.'/../../vendor/autoload.php';
 
-use BadPoemPrinterExample\PoemPrinter;
-use BadPoemPrinterExample\RandomPoemPrinter;
-
-(new RandomPoemPrinter())->print();
-
-// Lösungsmöglichkeit mit Decoratorn erwähnen!
+(new PoemPrinter())->print();
